@@ -1,0 +1,23 @@
+{
+  "name": "e2-hub",
+  "version": "1.0.0",
+  "description": "Hub de portfolio e projetos universitários - Design hacker/Matrix",
+  "author": "Eli2Dev <Eliel.reiinan@gmail.com> (https://github.com/Eli2Dev)",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "portfolio",
+    "hacker",
+    "matrix",
+    "university",
+    "projects"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "gh-pages": "^6.1.0"
+  }
+}
