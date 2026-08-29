@@ -4,227 +4,335 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="ProdByE²">
-  <meta name="description" content="Hub de portfolio e projetos universitários - Design hacker/Matrix">
-  <title>E² Hub | Portfolio & Projetos</title>
+  <meta name="description" content="Eliel Reinan — Dev Fullstack. Automações, sites, plugins e projetos experimentais. Salvador, 21 anos.">
+  <meta property="og:url" content="https://e2dev.me">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="E² - Projetos e Portfolio">
+  <meta property="og:description" content="Eliel Reinan — Dev Fullstack. Automações, sites, plugins e projetos experimentais.">
+  <meta property="og:image" content="https://e2dev.me/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="E² - Projetos e Portfolio">
+  <meta name="twitter:description" content="Eliel Reinan — Dev Fullstack. Automações, sites, plugins e projetos experimentais.">
+  <link rel="canonical" href="https://e2dev.me/">
+  <title>E² - Projetos e Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Matrix Rain Canvas -->
-  <canvas id="matrix-rain"></canvas>
+  <!-- Ambient Canvas Layer -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
   <!-- Scanline Overlay -->
   <div class="scanlines" aria-hidden="true"></div>
 
-  <!-- CRT Vignette -->
+  <!-- Vignette -->
   <div class="vignette" aria-hidden="true"></div>
 
-  <!-- Terminal Header -->
-  <header class="terminal-header">
-    <div class="terminal-bar">
-      <div class="terminal-buttons">
-        <span class="btn close" aria-hidden="true"></span>
-        <span class="btn minimize" aria-hidden="true"></span>
-        <span class="btn maximize" aria-hidden="true"></span>
-      </div>
-      <div class="terminal-title">e2-hub://mainframe</div>
-    </div>
-    <div class="terminal-prompt">
-      <span class="prompt-user">eli2dev@e2-hub</span>
-      <span class="prompt-sep">:~$</span>
-      <span class="prompt-cursor" aria-hidden="true">_</span>
-    </div>
-  </header>
+  <!-- Floating Particles -->
+  <div id="particles-container" aria-hidden="true"></div>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="hero-glitch" data-text="E² HUB">E² HUB</div>
-      <p class="hero-subtitle">// Portfolio & Projetos Universitários</p>
-      <div class="hero-tags">
-        <span class="tag">[Hacker]</span>
-        <span class="tag">[Matrix]</span>
-        <span class="tag">[Dev]</span>
-        <span class="tag">[Student]</span>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-value" data-target="0">0</span>
-          <span class="stat-label">Projetos</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" data-target="0">0</span>
-          <span class="stat-label">Tecnologias</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" data-target="0">0</span>
-          <span class="stat-label">Anos Exp.</span>
-        </div>
-      </div>
-      <a href="#projects" class="btn-enter">
-        <span>ACESSAR SISTEMA</span>
-        <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-    </section>
+  <!-- Main Layout -->
+  <div class="page-wrapper">
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-      <h2 class="section-title">
-        <span class="bracket">[</span>
-        SOBRE_O_OPERADOR
-        <span class="bracket">]</span>
-      </h2>
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="card-header">
-            <span class="card-icon">▲</span>
-            <h3>IDENTITY</h3>
+    <!-- Side Nav / Status Bar -->
+    <aside class="side-nav" aria-label="Navegação lateral">
+      <div class="nav-dot" data-section="home" aria-label="Início">
+        <span class="dot-indicator"></span>
+      </div>
+      <div class="nav-dot" data-section="about" aria-label="Sobre">
+        <span class="dot-indicator"></span>
+      </div>
+      <div class="nav-dot" data-section="freelance" aria-label="Freelance">
+        <span class="dot-indicator"></span>
+      </div>
+      <div class="nav-dot" data-section="projects" aria-label="Projetos">
+        <span class="dot-indicator"></span>
+      </div>
+      <div class="nav-dot" data-section="contact" aria-label="Contato">
+        <span class="dot-indicator"></span>
+      </div>
+      <div class="nav-divider"></div>
+      <div class="nav-status">
+        <span class="status-dot online" aria-hidden="true"></span>
+        <span class="status-text">ONLINE</span>
+      </div>
+    </aside>
+
+    <!-- Progress Bar Top -->
+    <div class="top-progress" aria-hidden="true">
+      <div class="progress-fill" id="top-progress-fill"></div>
+    </div>
+
+    <main class="main-content" id="main-content">
+
+      <!-- HERO SECTION -->
+      <section class="section hero-section" id="home" data-section="home">
+        <div class="hero-inner">
+          <!-- Floating decorative elements -->
+          <div class="hero-decor" aria-hidden="true">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="grid-lines"></div>
           </div>
-          <div class="card-body">
-            <p><span class="key">Nome:</span> <span class="value">Eliel Reis</span></p>
-            <p><span class="key">Handle:</span> <span class="value">Eli2Dev</span></p>
-            <p><span class="key">Role:</span> <span class="value">Dev Fullstack / Discente</span></p>
-            <p><span class="key">Localização:</span> <span class="value">Brasil</span></p>
-          </div>
-        </div>
-        <div class="about-card">
-          <div class="card-header">
-            <span class="card-icon">⚡</span>
-            <h3>STACK_PRINCIPAL</h3>
-          </div>
-          <div class="card-body">
-            <div class="tech-stack">
-              <span class="tech">TypeScript</span>
-              <span class="tech">React</span>
-              <span class="tech">Node.js</span>
-              <span class="tech">Python</span>
-              <span class="tech">Go</span>
-              <span class="tech">PostgreSQL</span>
-              <span class="tech">Docker</span>
-              <span class="tech">Linux</span>
+
+          <div class="hero-content">
+            <!-- Greeting / Terminal line -->
+            <div class="hero-greeting">
+              <span class="prompt-prefix">>_</span>
+              <span class="greeting-text" id="greeting-text"></span>
+              <span class="cursor-block" aria-hidden="true"></span>
+            </div>
+
+            <!-- Main Identity -->
+            <div class="hero-identity">
+              <h1 class="hero-name" id="hero-name">
+                <span class="name-part" data-text="ELIEL">ELIEL</span>
+                <span class="name-part" data-text="REINAN">REINAN</span>
+              </h1>
+              <p class="hero-title">DEV FULLSTACK</p>
+            </div>
+
+            <!-- Meta badges -->
+            <div class="hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">IDADE</span>
+                <span class="meta-value">21</span>
+              </div>
+              <div class="meta-divider" aria-hidden="true"></div>
+              <div class="meta-item">
+                <span class="meta-label">BASE</span>
+                <span class="meta-value">SALVADOR, BA</span>
+              </div>
+              <div class="meta-divider" aria-hidden="true"></div>
+              <div class="meta-item">
+                <span class="meta-label">STATUS</span>
+                <span class="meta-value status-active">DISPONÍVEL</span>
+              </div>
+            </div>
+
+            <!-- Tagline -->
+            <p class="hero-tagline" id="hero-tagline">
+              Construo automações, sites, plugins e sistemas que funcionam.
+              <br>Código limpo. Design intencional. Entrega real.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="hero-ctas">
+              <a href="#freelance" class="btn btn-primary" data-magnetic>
+                <span class="btn-text">CONTRATAR</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+                <span class="btn-glow" aria-hidden="true"></span>
+              </a>
+              <a href="#projects" class="btn btn-secondary" data-magnetic>
+                <span class="btn-text">VER PROJETOS</span>
+                <span class="btn-arrow" aria-hidden="true">↓</span>
+              </a>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator" aria-hidden="true">
+              <span class="scroll-text">ROLE</span>
+              <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+              </svg>
             </div>
           </div>
         </div>
-        <div class="about-card">
-          <div class="card-header">
-            <span class="card-icon">◆</span>
-            <h3>OBJETIVO</h3>
-          </div>
-          <div class="card-body">
-            <p>Construir sistemas robustos, escaláveis e esteticamente hackers. Este hub centraliza meus projetos acadêmicos e pessoais — cada um um experimento em código limpo e design cyberpunk.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-      <h2 class="section-title">
-        <span class="bracket">[</span>
-        PROJETOS_COMPILADOS
-        <span class="bracket">]</span>
-      </h2>
-      <div class="projects-grid" id="projects-grid">
-        <!-- Projects will be injected by JS -->
-      </div>
-      <div class="projects-placeholder" id="projects-placeholder">
-        <div class="placeholder-terminal">
-          <div class="placeholder-line">> CARREGANDO MÓDULOS...</div>
-          <div class="placeholder-line">> VARRENDO REPOSITÓRIOS...</div>
-          <div class="placeholder-line">> AGUARDANDO DADOS DO USUÁRIO...</div>
-          <div class="placeholder-line blink">> PRONTO PARA INJEÇÃO</div>
+      <!-- ABOUT SECTION -->
+      <section class="section about-section" id="about" data-section="about">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <h2 class="section-title">SOBRE</h2>
+          <div class="section-line" aria-hidden="true"></div>
         </div>
-      </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-      <h2 class="section-title">
-        <span class="bracket">[</span>
-        HABILIDADES_CARREGADAS
-        <span class="bracket">]</span>
-      </h2>
-      <div class="skills-categories">
-        <div class="skill-category">
-          <h3><span class="bracket">[</span>FRONTEND<span class="bracket">]</span></h3>
-          <div class="skill-bars">
-            <div class="skill-bar"><span class="skill-name">React/Next.js</span><div class="bar"><div class="fill" data-level="90"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">TypeScript</span><div class="bar"><div class="fill" data-level="85"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Tailwind/CSS</span><div class="bar"><div class="fill" data-level="88"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Three.js/GSAP</span><div class="bar"><div class="fill" data-level="70"></div></div></div>
+        <div class="about-grid">
+          <!-- Bio Card -->
+          <article class="about-card bio-card">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-content">
+              <h3 class="card-title">PERFIL</h3>
+              <div class="bio-text" id="bio-text"></div>
+              <div class="bio-highlights">
+                <div class="highlight-item">
+                  <span class="highlight-icon" aria-hidden="true">▲</span>
+                  <span>TÉCNICO EM DESENVOLVIMENTO DE SISTEMAS — SENAI</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="highlight-icon" aria-hidden="true">◆</span>
+                  <span>ENGENHARIA DA COMPUTAÇÃO — UNIJORGE (CURSANDO)</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stack Card -->
+          <article class="about-card stack-card">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-content">
+              <h3 class="card-title">STACK</h3>
+              <div class="stack-cloud" id="stack-cloud"></div>
+            </div>
+          </article>
+
+          <!-- Focus Card -->
+          <article class="about-card focus-card">
+            <div class="card-glow" aria-hidden="true"></div>
+            <div class="card-content">
+              <h3 class="card-title">FOCO ATUAL</h3>
+              <ul class="focus-list" id="focus-list"></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FREELANCE SECTION -->
+      <section class="section freelance-section" id="freelance" data-section="freelance">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <h2 class="section-title">FREELANCE</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="freelance-intro" id="freelance-intro"></div>
+
+        <div class="services-grid" id="services-grid">
+          <!-- Services injected by JS -->
+        </div>
+
+        <div class="freelance-cta">
+          <div class="cta-card">
+            <div class="cta-glow" aria-hidden="true"></div>
+            <div class="cta-content">
+              <h3>VAMOS CONVERSAR?</h3>
+              <p>Me manda uma mensagem direta no GitHub ou LinkedIn. Respondo rápido.</p>
+              <div class="cta-links">
+                <a href="https://github.com/Eli2Dev" target="_blank" rel="noopener" class="cta-link" data-magnetic>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  <span>GITHUB</span>
+                </a>
+                <a href="https://linkedin.com/in/eliel-reis" target="_blank" rel="noopener" class="cta-link" data-magnetic>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  <span>LINKEDIN</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="skill-category">
-          <h3><span class="bracket">[</span>BACKEND<span class="bracket">]</span></h3>
-          <div class="skill-bars">
-            <div class="skill-bar"><span class="skill-name">Node.js/Express</span><div class="bar"><div class="fill" data-level="85"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Python/FastAPI</span><div class="bar"><div class="fill" data-level="80"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Go</span><div class="bar"><div class="fill" data-level="65"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">PostgreSQL/Redis</span><div class="bar"><div class="fill" data-level="82"></div></div></div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section class="section projects-section" id="projects" data-section="projects">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <h2 class="section-title">PROJETOS</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+
+        <p class="projects-intro" id="projects-intro"></p>
+
+        <div class="projects-list" id="projects-list">
+          <!-- Projects injected by JS -->
+        </div>
+      </section>
+
+      <!-- CONTACT / FOOTER SECTION -->
+      <section class="section contact-section" id="contact" data-section="contact">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <h2 class="section-title">CONTATO</h2>
+          <div class="section-line" aria-hidden="true"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 class="contact-title">VAMOS TRABALHAR JUNTOS?</h3>
+            <p class="contact-desc" id="contact-desc"></p>
+
+            <div class="contact-methods">
+              <a href="https://github.com/Eli2Dev" target="_blank" rel="noopener" class="contact-method" data-magnetic>
+                <div class="method-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <div class="method-info">
+                  <span class="method-label">GITHUB</span>
+                  <span class="method-value">@Eli2Dev</span>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/eliel-reis" target="_blank" rel="noopener" class="contact-method" data-magnetic>
+                <div class="method-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </div>
+                <div class="method-info">
+                  <span class="method-label">LINKEDIN</span>
+                  <span class="method-value">eliel-reis</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+              <div class="form-group">
+                <label for="name" class="form-label">NOME</label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="Seu nome" required>
+                <span class="form-line" aria-hidden="true"></span>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">EMAIL</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                <span class="form-line" aria-hidden="true"></span>
+              </div>
+              <div class="form-group">
+                <label for="project" class="form-label">TIPO DE PROJETO</label>
+                <select id="project" name="project" class="form-select" required>
+                  <option value="">Selecione...</option>
+                  <option value="automation">Automação / Script</option>
+                  <option value="website">Site / Landing Page</option>
+                  <option value="plugin">Plugin / Extensão</option>
+                  <option value="api">API / Backend</option>
+                  <option value="other">Outro</option>
+                </select>
+                <span class="form-line" aria-hidden="true"></span>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">DETALHES</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Conte sobre seu projeto, prazo, orçamento..." required></textarea>
+                <span class="form-line" aria-hidden="true"></span>
+              </div>
+              <button type="submit" class="btn btn-primary form-submit" data-magnetic>
+                <span class="btn-text">ENVIAR PROPOSTA</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+                <span class="btn-glow" aria-hidden="true"></span>
+              </button>
+            </form>
           </div>
         </div>
-        <div class="skill-category">
-          <h3><span class="bracket">[</span>DEVOPS/TOOLS<span class="bracket">]</span></h3>
-          <div class="skill-bars">
-            <div class="skill-bar"><span class="skill-name">Docker/K8s</span><div class="bar"><div class="fill" data-level="75"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Linux/Shell</span><div class="bar"><div class="fill" data-level="85"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">Git/CI-CD</span><div class="bar"><div class="fill" data-level="88"></div></div></div>
-            <div class="skill-bar"><span class="skill-name">AWS/Vercel</span><div class="bar"><div class="fill" data-level="70"></div></div></div>
-          </div>
-        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <span class="footer-brand" data-text="ProdByE²">ProdByE²</span>
       </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-      <h2 class="section-title">
-        <span class="bracket">[</span>
-        ESTABELECER_CONEXÃO
-        <span class="bracket">]</span>
-      </h2>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3><span class="bracket">[</span>GITHUB<span class="bracket">]</span></h3>
-          <a href="https://github.com/Eli2Dev" target="_blank" rel="noopener" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            github.com/Eli2Dev
-          </a>
-        </div>
-        <div class="contact-card">
-          <h3><span class="bracket">[</span>LINKEDIN<span class="bracket">]</span></h3>
-          <a href="https://linkedin.com/in/eliel-reis" target="_blank" rel="noopener" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            linkedin.com/in/eliel-reis
-          </a>
-        </div>
-        <div class="contact-card">
-          <h3><span class="bracket">[</span>EMAIL<span class="bracket">]</span></h3>
-          <a href="mailto:Eliel.reiinan@gmail.com" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Eliel.reiinan@gmail.com
-          </a>
-        </div>
+      <div class="footer-center">
+        <span class="footer-version">v1.0.0</span>
       </div>
-    </section>
-  </main>
+      <div class="footer-right">
+        <span class="footer-code">Coded with ██████ by Eli2Dev</span>
+      </div>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-copy">// Sistema operacional: <span class="highlight">E² Hub v1.0.0</span></p>
-      <p class="footer-brand">
-        <a href="https://github.com/Eli2Dev" target="_blank" rel="noopener">ProdByE²</a>
-      </p>
-      <p class="footer-code">>_ echo "Coded with ██████ by Eli2Dev"</p>
-    </div>
-  </footer>
+  </div>
 
-  <!-- Audio Context for beep sounds -->
   <script src="app.js"></script>
 </body>
 </html>

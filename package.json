@@ -1,8 +1,8 @@
 {
   "name": "e2-hub",
   "version": "1.0.0",
-  "description": "Hub de portfolio e projetos universitários - Design hacker/Matrix",
-  "author": "Eli2Dev <Eliel.reiinan@gmail.com> (https://github.com/Eli2Dev)",
+  "description": "E² - Projetos e Portfolio — Eliel Reinan, Dev Fullstack. Automações, sites, plugins.",
+  "author": "Eli2Dev <Eliel.reiinan@gmail.com> (https://e2dev.me)",
   "scripts": {
     "dev": "npx serve .",
     "build": "echo 'Static site - no build needed'",
@@ -10,10 +10,10 @@
   },
   "keywords": [
     "portfolio",
-    "hacker",
-    "matrix",
-    "university",
-    "projects"
+    "developer",
+    "fullstack",
+    "automation",
+    "plugins"
   ],
   "license": "MIT",
   "devDependencies": {
