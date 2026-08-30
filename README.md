@@ -168,4 +168,4 @@ MIT — Use, modifique, compartilhe. Créditos apreciados!
 ---
 
 > `// Sistema operacional: E² Hub v1.0.0`
-> `>_ echo "Coded with ██████ by Eli2Dev"`
+> `>_ echo "Coded with ██████ by Eli2Dev"` 
