@@ -1,38 +1,48 @@
 /* ========================================
    ELIEL REINAN — Dev Fullstack Portfolio
    Organic, living design. Not AI-generated.
+   Cyan/Violet palette (estilo Figma Make)
    ======================================== */
 
-/* CSS Custom Properties — Organic Palette */
+/* CSS Custom Properties — Cyan/Violet Palette */
 :root {
-  /* Core — Deep, warm darks */
-  --bg-deep: #080a0c;
-  --bg-base: #0c0f12;
-  --bg-elevated: #111519;
-  --bg-card: #141a1f;
-  --bg-hover: #1a2028;
+  /* Core — Deep darks */
+  --bg-deep: #07070f;
+  --bg-base: #0a0a12;
+  --bg-elevated: #0f0f1a;
+  --bg-card: #12121f;
+  --bg-hover: #1a1a2e;
 
-  /* Text — Warm whites, not pure */
-  --text-primary: #e8e6e1;
-  --text-secondary: #a8a49c;
-  --text-muted: #6b6862;
-  --text-dim: #4a4742;
+  /* Text */
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #475569;
 
-  /* Accent — Organic green, not matrix neon */
-  --accent: #6fc77a;
-  --accent-bright: #8de092;
-  --accent-dim: #4aa855;
-  --accent-glow: rgba(111, 199, 122, 0.35);
-  --accent-glow-strong: rgba(111, 199, 122, 0.6);
+  /* Accent — Cyan primary, Violet secondary */
+  --accent: #00d4ff;
+  --accent-bright: #22dfff;
+  --accent-dim: #00a8cc;
+  --accent-glow: rgba(0, 212, 255, 0.35);
+  --accent-glow-strong: rgba(0, 212, 255, 0.6);
 
-  /* Warm accent for contrast */
-  --warm: #d4a85a;
-  --warm-glow: rgba(212, 168, 90, 0.3);
+  --accent-2: #7c3aed;
+  --accent-2-bright: #a78bfa;
+  --accent-2-dim: #5b21b6;
+  --accent-2-glow: rgba(124, 58, 237, 0.35);
+  --accent-2-glow-strong: rgba(124, 58, 237, 0.6);
 
-  /* Borders — Subtle, organic */
-  --border-subtle: #2a2f34;
-  --border-default: #343a40;
-  --border-focus: #6fc77a;
+  /* Warm accent — Amber/Gold for gradients */
+  --warm: #d4a828;
+  --warm-bright: #e8c044;
+  --warm-dim: #a8801a;
+  --warm-glow: rgba(212, 168, 40, 0.35);
+  --warm-glow-strong: rgba(212, 168, 40, 0.6);
+
+  /* Borders */
+  --border-subtle: rgba(255,255,255,0.04);
+  --border-default: rgba(255,255,255,0.08);
+  --border-focus: #00d4ff;
 
   /* Typography */
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -68,7 +78,8 @@
   --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
   --shadow-glow: 0 0 40px var(--accent-glow);
-  --shadow-warm: 0 0 40px var(--warm-glow);
+  --shadow-glow-2: 0 0 40px var(--accent-2-glow);
+  --shadow-glow-strong: 0 0 60px var(--accent-glow-strong);
 
   /* Z-layers */
   --z-canvas: -2;

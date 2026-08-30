@@ -159,11 +159,15 @@ MIT — Use, modifique, compartilhe. Créditos apreciados!
 
 ---
 
+## 🔧 ProdByE²
+
 <p align="center">
-  <a href="https://github.com/Eli2Dev" target="_blank">
+  <a href="https://e2dev.me" target="_blank" rel="noopener">
     <strong>ProdByE²</strong>
   </a>
 </p>
+
+[![ProdByE²](https://img.shields.io/badge/Produced_by-E²-00d4ff?style=flat-square)](https://e2dev.me)
 
 ---
 

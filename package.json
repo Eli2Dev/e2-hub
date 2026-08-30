@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "E² - Projetos e Portfolio — Eliel Reinan, Dev Fullstack. Automações, sites, plugins.",
   "author": "Eli2Dev <Eliel.reiinan@gmail.com> (https://e2dev.me)",
+  "homepage": "https://e2dev.me",
   "scripts": {
     "dev": "npx serve .",
     "build": "echo 'Static site - no build needed'",
